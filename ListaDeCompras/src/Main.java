@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//USE GIT STATUS AND GIT LOG BEFORE WORK ON IT
 public class Main {
 
     static void print(String content){
@@ -9,59 +9,60 @@ public class Main {
         System.out.println(content);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
      Scanner sc = new Scanner(System.in);
 
         print("Hello user , would you like to create a list? [yes/no]");
         String read = sc.nextLine();
-        sc.nextLine();
-        boolean yesOrNo = false;
+        Boolean yesOrNo = null;
 
         if (read.equals("yes")){
             yesOrNo = true;
-        }else {
+        }else if(read.equals("no")) {
             yesOrNo = false;
         }
 
-        if (yesOrNo){
-            //Process to create a list
+        try{
+            if (yesOrNo){
+                //Process to create a list
 
-            print("Type the name of your list");
-            String nameList = sc.nextLine();
-            sc.nextLine();
-            ShoppingList shoppingList = new ShoppingList(nameList);
-            print(" The "+ shoppingList.getListName()+ " was created " );
+                print("Type the name of your list");
+                String nameList = sc.nextLine();
+                sc.nextLine();
+                ShoppingList shoppingList = new ShoppingList(nameList);
+                print(" The "+ shoppingList.getListName()+ " was created " );
 
-            //Using the list
-            print("Press 1 to add a new item, 2 to delete an item (item was bought), or 3 to close the program: ");
-            int option = sc.nextByte();
-            switch (option) {
-                case 3 :
-                    print("Ok, good to see you =)");
-                    break;
+                //Using the list
+                print("Press 1 to add a new item, 2 to delete an item (item was bought), or 3 to close the program: ");
+                int option = sc.nextByte();
+                switch (option) {
+                    case 3 :
+                        print("Ok, good to see you =)");
+                        break;
 
-                case 1 :
-                    print("Type the item : "  );
-                    String newItem = sc.nextLine();
-                    sc.nextLine();
-                    shoppingList.addElementShoppingList(newItem);
-                    print("The item" + newItem + "was aditioned on the list");
+                    case 1 :
+                        print("Type the item : "  );
+                        String newItem = sc.nextLine();
+                        sc.nextLine();
+                        shoppingList.addElementShoppingList(newItem);
+                        print("The item" + newItem + "was aditioned on the list");
 
-                    break;
+                        break;
 
-                case 2 :
-                    print("Type the item that you want to delet: ");
-                    String delItem = sc.nextLine();
-                    shoppingList.deletElementShoppingList(delItem);
-                    print("The item" + delItem + "was deleted on the list");
-                    break;
+                    case 2 :
+                        print("Type the item that you want to delet: ");
+                        String delItem = sc.nextLine();
+                        shoppingList.deletElementShoppingList(delItem);
+                        print("The item" + delItem + "was deleted on the list");
+                        break;
+                }
+
             }
-
+            else if (!yesOrNo){
+                print("Good to see you, user =)");
+            }
+        }catch (NullPointerException excp){
+            printLn("You dont send the correct mensage.");
         }
-        else{
-            print("Ok, good to see you =)");
-        }
-
-
     }
 }

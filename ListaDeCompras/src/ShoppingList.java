@@ -59,7 +59,4 @@ public class ShoppingList {
         System.out.println("O nome da lista : "+ listName+ ". Quantidade de elementos : "+shoppingList.size()+
                 " Quantidade de elementos comprados :"+ boughtItems.size() );
     }
-
-
-
 }
