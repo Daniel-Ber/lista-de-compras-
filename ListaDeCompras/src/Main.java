@@ -21,8 +21,24 @@ public class Main {
         }else if(read.equals("no")) {
             yesOrNo = false;
         }
+        while(yesOrNo == null) {
+            try {
+                throw new NullPointerException("Invalid mensage");
+            }
+            catch (NullPointerException e) {
+                printLn("Please provide a valid text message : ");
+                read = sc.nextLine();
+                if (read.equals("yes")) {
+                    yesOrNo = true;
+                } else if (read.equals("no")) {
+                    yesOrNo = false;
+                }
+            }
+        }
 
-        try{
+
+
+
             if (yesOrNo){
                 //Process to create a list
 
@@ -61,8 +77,6 @@ public class Main {
             else if (!yesOrNo){
                 print("Good to see you, user =)");
             }
-        }catch (NullPointerException excp){
-            printLn("You dont send the correct mensage.");
-        }
+
     }
 }
