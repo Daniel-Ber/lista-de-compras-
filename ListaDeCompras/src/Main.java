@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 //USE GIT STATUS AND GIT LOG BEFORE WORK ON IT
 public class Main {
@@ -9,6 +8,11 @@ public class Main {
     static void printLn(String content){
         System.out.println(content);
     }
+    static  void cls(){
+        for (int i = 0 ; i <= 50; i++ ){
+            printLn(" ");
+        }
+    }
 
     public static void main(String[] args)  {
      Scanner sc = new Scanner(System.in);
@@ -16,7 +20,7 @@ public class Main {
      Boolean yesOrNo = null;
      int optionForSwitch = 0;
 
-        print("Hello user , would you like to create a list? [yes/no]");
+        print("Hello user , would you like to create a list? [yes/no]  : ");
         String read = sc.nextLine();
 
 
@@ -62,26 +66,29 @@ public class Main {
 
                         switch (optionForSwitch) {
                             case 1 :
+                                cls();
                                 print("Type the item : "  );
                                 String newItem = sc.nextLine();
                                 shoppingList.addElementShoppingList(newItem);
                                 printLn("The item " + newItem + " was aditioned on the list");
                                 break;
                             case 2 :
-                                print("Type the item that you want to delet: ");
-                                String delItem = sc.nextLine();
-                                shoppingList.deletElementShoppingList(delItem);
-                                printLn("The item" + delItem + "was deleted on the list");
+                               
+                                cls();
+                                shoppingList.deletElementShoppingList();
                                 break;
                             case 3 :
+                                cls();
                                 shoppingList.showElementsList();
                                 break;
                             case 4 :
+                                cls();
                                 print("Ok, good to see you =)");
                                 stopWhile = true;
                                 break;
                         }
                     }catch (NumberFormatException exception){
+                        cls();
                         printLn("Please provide a valid text message : ");
                     }
 
