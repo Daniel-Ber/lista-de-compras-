@@ -7,6 +7,8 @@ public class ShoppingList {
     private  List<String> shoppingList ;
     private  List<String> boughtItems;
     private String listName;
+    private String bought  =  " [Bought] ";
+    private String notBought = " [Not Bought] ";
     Scanner scanner = new Scanner(System.in);
 
     public ShoppingList(String listName){
@@ -42,6 +44,55 @@ public class ShoppingList {
     public void addElementShoppingList(String element){
         shoppingList.add(element);
     }
+
+    public String searchElementOfTheList(int index){
+        //100% Thath is gonna be necessary to make a exception
+        return shoppingList.get(index);
+    }
+
+    public void setShoppingListByIndex (int index, String element){
+        //100% Thath is gonna be necessary to make a exception
+        shoppingList.set(index, element);
+    }
+
+    public void setAsBoughtOrNotBought(){
+        //100% Thath is gonna be necessary to make  exceptions
+
+        //Read the index
+        this.showElementsList();
+        System.out.print("Type the number of the element : ");
+        String input = scanner.nextLine();
+        int index = Integer.parseInt(input) - 1;
+
+        //Read the status Bought or not
+        System.out.print("Is this item Bought ? : [yes/no]");
+        String inputYesOrNot = scanner.next();
+        Boolean boughOrNot = null;
+        //Take the item by the index
+        String item = this.searchElementOfTheList(index);
+
+        //Decide if is bought or not bought
+        if (inputYesOrNot.equalsIgnoreCase("yes")){
+            boughOrNot = true;
+        } else if (inputYesOrNot.equalsIgnoreCase("no")) {
+            boughOrNot = false;
+        }
+
+        //Add the status in the item
+        if (boughOrNot){
+            item += bought;
+        }else {
+            item += notBought;
+        }
+
+        //Put the item with status in the list
+        this.setShoppingListByIndex(index, item);
+
+
+    }
+
+
+
     public void deletElementShoppingList(){
 
         try {

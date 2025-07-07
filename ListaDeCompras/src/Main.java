@@ -57,8 +57,8 @@ public class Main {
                 while (!stopWhile){
                     try{
                         print("Press 1 to add a new item, 2 to " +
-                                "delete an item (item was bought),3 to see the list" +
-                                " or 4 to " +
+                                "delete an item (item was bought),3 to see the list,4 to add status of bought or not" +
+                                " and  5 to " +
                                 "close the program: ");
                         String input = sc.nextLine();
                         optionForSwitch = Integer.parseInt(input);
@@ -73,7 +73,6 @@ public class Main {
                                 printLn("The item " + newItem + " was aditioned on the list");
                                 break;
                             case 2 :
-                               
                                 cls();
                                 shoppingList.deletElementShoppingList();
                                 break;
@@ -82,6 +81,10 @@ public class Main {
                                 shoppingList.showElementsList();
                                 break;
                             case 4 :
+                                //Code works but , why the code stop here ?
+                                cls();
+                                shoppingList.setAsBoughtOrNotBought();
+                            case 5 :
                                 cls();
                                 print("Ok, good to see you =)");
                                 stopWhile = true;
@@ -94,8 +97,6 @@ public class Main {
 
 
                 }
-
-
             }
             else if (!yesOrNo){
                 print("Good to see you, user =)");
