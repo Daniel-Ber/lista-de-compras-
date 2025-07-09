@@ -46,14 +46,14 @@ public class Main {
 
             if (yesOrNo){
                 //Process to create a list
-                print("Type the name of your list");
+                print("Type the name of your list : ");
                 String nameList = sc.nextLine();
                 ShoppingList shoppingList = new ShoppingList(nameList);
                 printLn(" The "+ shoppingList.getListName()+ " was created " );
                 //List was created
 
                 //Using the list
-                //We have to add a new function: See the list[x], made like a to-do (Bought itens)[x].
+
                 while (!stopWhile){
                     try{
                         print("Press 1 to add a new item, 2 to " +
@@ -67,30 +67,48 @@ public class Main {
                         switch (optionForSwitch) {
                             case 1 :
                                 cls();
-                                print("Type the item : "  );
+                                print("Type the item [or type exit to go back] : "  );
                                 String newItem = sc.nextLine();
+                                if(newItem.equalsIgnoreCase("exit")){
+                                    break;
+                                }else {
                                 shoppingList.addElementShoppingList(newItem);
                                 printLn("The item " + newItem + " was aditioned on the list");
                                 break;
+                                }
                             case 2 :
                                 cls();
                                 shoppingList.deletElementShoppingList();
                                 break;
+
                             case 3 :
                                 cls();
                                 shoppingList.showElementsList();
                                 break;
                             case 4 :
-                                //Code works but , why the code stop here ?
                                 cls();
-                                shoppingList.setAsBoughtOrNotBought();
-                                break;
+                                print("Are you sure ? [yes/no]: ");
+                                String sureAboutThat = sc.next();
+                                if (sureAboutThat.equalsIgnoreCase("yes")){
+                                    shoppingList.setAsBoughtOrNotBought();
+                                    break;
+                                } else if (sureAboutThat.equalsIgnoreCase("no")) {
+                                    break;
+                                }
                             case 5 :
                                 cls();
+                                print("Are you sure ? [yes/no]: ");
+                                String sure = sc.next();
+                                if (sure.equalsIgnoreCase("yes")){
                                 print("Ok, good to see you =)");
                                 stopWhile = true;
                                 break;
+                                }else if (sure.equalsIgnoreCase("no")){
+                                    break;
+                                }
                         }
+                        //When the project is  finish, solve this , is not good one catch to very exceptions
+                        //After this , i made it, go to notion and see what is the next step
                     }catch (Exception exception){
                         cls();
                         printLn("Please provide a valid text message : ");

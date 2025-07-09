@@ -5,12 +5,3 @@ quantidade  dos elementos , elementos comprados (Famoso traçado na vida real) e
 de adcionar um elemento novo e de deletar .
 Cada produto pode ter um subproduto.
 
-
-
-git commit --amend -m "What was done:
--Added the functionality to set a product's status as purchased or not.
--Added new functionalities to the ShoppingList class.
-What needs to be done:
--Make a Readme.md- Add a way to return to the previous menu after selecting a numeric option (e.g., go back after choosing option 1)
--Handle exceptions for the new functionalities in ShoppingList.
--Fix the bug in case 4: the code is exiting the while loop and going into the  block which ends the program."

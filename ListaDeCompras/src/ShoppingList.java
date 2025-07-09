@@ -93,19 +93,22 @@ public class ShoppingList {
 
 
     public void deletElementShoppingList(){
+        if (this.shoppingList.size() == 0 ){
+            System.out.println("Nothing here yet.");
+        }else {
+            try {
+                System.out.println("Type any number wich is not on the list to go back");
+                this.showElementsList();
+                System.out.println("Type the number of the element that you want to delet  : ");
+                int indexElement = scanner.nextInt() - 1;
+                String elementDel = shoppingList.get(indexElement);
+                shoppingList.remove(shoppingList.get(indexElement));
+                System.out.println("The element " + elementDel + " was deleted.");
 
-        try {
-            this.showElementsList();
-            System.out.println("Type the number of the element that you want to delet  : ");
-            int indexElement = scanner.nextInt() - 1 ;
-            String elementDel = shoppingList.get(indexElement);
-            shoppingList.remove(shoppingList.get(indexElement));
-            System.out.println("The element "+elementDel+" was deleted.");
-
-        }catch (IndexOutOfBoundsException exception){
-            System.out.println("The number of the element dont exist on the list. ");
+            } catch (IndexOutOfBoundsException exception) {
+                System.out.println("The number of the element dont exist on the list. ");
+            }
         }
-
 
     }
 
