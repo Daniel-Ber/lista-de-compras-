@@ -53,7 +53,7 @@ public class Main {
                 //List was created
 
                 //Using the list
-                //We have to add a new function: See the list[x], made like a to-do (Bought itens).
+                //We have to add a new function: See the list[x], made like a to-do (Bought itens)[x].
                 while (!stopWhile){
                     try{
                         print("Press 1 to add a new item, 2 to " +
@@ -84,13 +84,14 @@ public class Main {
                                 //Code works but , why the code stop here ?
                                 cls();
                                 shoppingList.setAsBoughtOrNotBought();
+                                break;
                             case 5 :
                                 cls();
                                 print("Ok, good to see you =)");
                                 stopWhile = true;
                                 break;
                         }
-                    }catch (NumberFormatException exception){
+                    }catch (Exception exception){
                         cls();
                         printLn("Please provide a valid text message : ");
                     }

@@ -46,7 +46,6 @@ public class ShoppingList {
     }
 
     public String searchElementOfTheList(int index){
-        //100% Thath is gonna be necessary to make a exception
         return shoppingList.get(index);
     }
 
@@ -56,16 +55,17 @@ public class ShoppingList {
     }
 
     public void setAsBoughtOrNotBought(){
-        //100% Thath is gonna be necessary to make  exceptions
+
 
         //Read the index
         this.showElementsList();
         System.out.print("Type the number of the element : ");
-        String input = scanner.nextLine();
+        String input = scanner.next();
         int index = Integer.parseInt(input) - 1;
 
         //Read the status Bought or not
         System.out.print("Is this item Bought ? : [yes/no]");
+        //IndexOutOfBoundsException
         String inputYesOrNot = scanner.next();
         Boolean boughOrNot = null;
         //Take the item by the index
@@ -87,7 +87,6 @@ public class ShoppingList {
 
         //Put the item with status in the list
         this.setShoppingListByIndex(index, item);
-
 
     }
 
