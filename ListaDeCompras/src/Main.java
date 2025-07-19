@@ -107,7 +107,7 @@ public class Main {
                                     break;
                                 }
                         }
-                        //When the project is  finish, solve this , is not good one catch to very exceptions
+                        //When the project is  finished, solve this , is not good one catch to very exceptions
                         //After this , i made it, go to notion and see what is the next step
                     }catch (Exception exception){
                         cls();

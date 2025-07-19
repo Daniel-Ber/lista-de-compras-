@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class ShoppingList {
     private  List<String> shoppingList ;
-    private  List<String> boughtItems;
     private String listName;
     private String bought  =  " [Bought] ";
     private String notBought = " [Not Bought] ";
@@ -14,7 +13,6 @@ public class ShoppingList {
     public ShoppingList(String listName){
         this.listName = listName;
         shoppingList = new ArrayList<>();
-        boughtItems = new ArrayList<>();
     }
 
     public List<String> getShoppingList() {
@@ -33,13 +31,6 @@ public class ShoppingList {
         this.shoppingList = shoppingList;
     }
 
-    public List<String> getBoughtItems() {
-        return boughtItems;
-    }
-
-    public void setBoughtItems(List<String> boughtItems) {
-        this.boughtItems = boughtItems;
-    }
 
     public void addElementShoppingList(String element){
         shoppingList.add(element);
@@ -80,9 +71,22 @@ public class ShoppingList {
 
         //Add the status in the item
         if (boughOrNot){
-            item += bought;
+            if (item.contains(bought)){
+                System.out.println("This item is already marked as " + bought);
+            } else if (item.contains(notBought)) {
+               item =  item.replace(notBought,bought);
+            }else {
+                item += bought;
+            }
         }else {
-            item += notBought;
+            if (item.contains(notBought)){
+                System.out.println("This item is already marked as " + notBought);
+            } else if (item.contains(bought)) {
+                item = item.replace(bought,notBought);
+            }else {
+                item += notBought;
+            }
+
         }
 
         //Put the item with status in the list
@@ -112,10 +116,7 @@ public class ShoppingList {
 
     }
 
-    public void getInformation(){
-        System.out.println("O nome da lista : "+ listName+ ". Quantidade de elementos : "+shoppingList.size()+
-                " Quantidade de elementos comprados :"+ boughtItems.size() );
-    }
+
 
     public void showElementsList(){
         for (int i = 0; i < shoppingList.size() ; i++) {
