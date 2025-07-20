@@ -22,27 +22,33 @@ Um aplicativo simples de terminal em Java para gerenciar listas de compras. Perm
 ```bash
 git clone https://github.com/seu-usuario/shopping-list-java.git
 cd shopping-list-java
-
+```
 
 ### 2. Compile o projeto:
 
 ```bash
 javac Main.java ShoppingList.java
-3. Execute o programa:
-bash
-Copy
-Edit
+```
+
+### 3. Execute o programa:
+
+```bash
 java Main
-📚 Aprendizados e boas práticas
-Tratamento básico de exceções com try/catch
+```
 
-Operações com listas usando ArrayList
+---
 
-Boas práticas de encapsulamento com getters e setters
+## 📚 Aprendizados e boas práticas
 
-Interação com o usuário via Scanner
+- Tratamento básico de exceções com `try/catch`  
+- Operações com listas usando `ArrayList`  
+- Boas práticas de encapsulamento com getters e setters  
+- Interação com o usuário via `Scanner`  
+- Validação de entrada do usuário para evitar erros como `IndexOutOfBoundsException`  
 
-Validação de entrada do usuário para evitar erros como IndexOutOfBoundsException
+---
 
-🧑‍💻 Autor
-Desenvolvido por [Daniel-Ber]
+## 🧑‍💻 Autor
+
+Desenvolvido por **Daniel-Ber**
+
