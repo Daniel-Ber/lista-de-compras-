@@ -1,9 +1,0 @@
-Lista de Compras
-
-Uma lista compras é composta por : elementos do que faltam comprar ,
-quantidade  dos elementos , elementos comprados (Famoso traçado na vida real) e a capacidade
-de adcionar um elemento novo e de deletar .
-Cada produto pode ter um subproduto.
-
-
-
