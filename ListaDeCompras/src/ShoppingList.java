@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,22 +38,36 @@ public class ShoppingList {
     }
 
     public String searchElementOfTheList(int index){
-        return shoppingList.get(index);
+        try {
+            return shoppingList.get(index);
+        }catch (IndexOutOfBoundsException exception){
+            System.out.println("This index  dont exist");
+            return null;
+        }
     }
 
-    public void setShoppingListByIndex (int index, String element){
-        //100% Thath is gonna be necessary to make a exception
-        shoppingList.set(index, element);
+    public void setShoppingListByIndex(int index, String element){
+        if (index >= 0 && index < shoppingList.size()) {
+            shoppingList.set(index, element);
+        } else {
+            System.out.println("Invalid index. Cannot update the item.");
+        }
     }
 
-    public void setAsBoughtOrNotBought(){
-
-
+    public void setAsBoughtOrNotBought() {
         //Read the index
-        this.showElementsList();
-        System.out.print("Type the number of the element : ");
-        String input = scanner.next();
-        int index = Integer.parseInt(input) - 1;
+        int index;
+        this.showElementsListWithNoScanner();
+        while (true) {
+            try {
+                System.out.print("Type the number of the element : ");
+                String input = scanner.next();
+                index = Integer.parseInt(input) - 1;
+                break;
+            } catch (NumberFormatException exception) {
+                System.out.println("Please type a valid number : ");
+            }
+        }
 
         //Read the status Bought or not
         System.out.print("Is this item Bought ? : [yes/no]");
@@ -61,66 +76,86 @@ public class ShoppingList {
         Boolean boughOrNot = null;
         //Take the item by the index
         String item = this.searchElementOfTheList(index);
+        if (item == null ) {
+            System.out.println("This item dont exist in the list");
+        } else {
+            //Decide if is bought or not bought
+            while(boughOrNot == null) {
+                if (inputYesOrNot.equalsIgnoreCase("yes")) {
+                    boughOrNot = true;
+                } else if (inputYesOrNot.equalsIgnoreCase("no")) {
+                    boughOrNot = false;
+                }
+                else{
+                    System.out.print("Invalid answer, please type yes or no  :   ");
+                    inputYesOrNot = scanner.next();
+                }
 
-        //Decide if is bought or not bought
-        if (inputYesOrNot.equalsIgnoreCase("yes")){
-            boughOrNot = true;
-        } else if (inputYesOrNot.equalsIgnoreCase("no")) {
-            boughOrNot = false;
-        }
-
-        //Add the status in the item
-        if (boughOrNot){
-            if (item.contains(bought)){
-                System.out.println("This item is already marked as " + bought);
-            } else if (item.contains(notBought)) {
-               item =  item.replace(notBought,bought);
-            }else {
-                item += bought;
             }
-        }else {
-            if (item.contains(notBought)){
-                System.out.println("This item is already marked as " + notBought);
-            } else if (item.contains(bought)) {
-                item = item.replace(bought,notBought);
-            }else {
-                item += notBought;
+            //Add the status in the item
+
+
+            if (boughOrNot) {
+                if (item.contains(bought)) {
+                    System.out.println("This item is already marked as " + bought);
+                } else if (item.contains(notBought)) {
+                    item = item.replace(notBought, bought);
+                } else {
+                    item += bought;
+                }
+            } else {
+                if (item.contains(notBought)) {
+                    System.out.println("This item is already marked as " + notBought);
+                } else if (item.contains(bought)) {
+                    item = item.replace(bought, notBought);
+                } else {
+                    item += notBought;
+                }
+
             }
 
-        }
+            //Put the item with status in the list
+            this.setShoppingListByIndex(index, item);
 
-        //Put the item with status in the list
-        this.setShoppingListByIndex(index, item);
+        }
 
     }
 
-
-
-    public void deletElementShoppingList(){
+    public void deletElementShoppingList(){;
         if (this.shoppingList.size() == 0 ){
             System.out.println("Nothing here yet.");
         }else {
             try {
                 System.out.println("Type any number wich is not on the list to go back");
-                this.showElementsList();
+                this.showElementsListWithNoScanner();
                 System.out.println("Type the number of the element that you want to delet  : ");
                 int indexElement = scanner.nextInt() - 1;
                 String elementDel = shoppingList.get(indexElement);
-                shoppingList.remove(shoppingList.get(indexElement));
+                shoppingList.remove(indexElement);
                 System.out.println("The element " + elementDel + " was deleted.");
 
             } catch (IndexOutOfBoundsException exception) {
                 System.out.println("The number of the element dont exist on the list. ");
+            }catch (InputMismatchException exception){
+                System.out.println("Please , type a valid mensage. ");
             }
         }
 
     }
 
-
-
-    public void showElementsList(){
+    public  void showElementsListWithNoScanner(){
         for (int i = 0; i < shoppingList.size() ; i++) {
             System.out.println("Element ("+(i + 1)+") : "+shoppingList.get(i));
         }
+    }
+
+    public void showElementsList(){
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < shoppingList.size() ; i++) {
+            System.out.println("Element ("+(i + 1)+") : "+shoppingList.get(i));
+        }
+        System.out.println("Type whatever you want to continue");
+        String whatever = sc.next();
+
     }
 }

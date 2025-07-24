@@ -55,13 +55,17 @@ public class Main {
                 //Using the list
 
                 while (!stopWhile){
-                    try{
+
                         print("Press 1 to add a new item, 2 to " +
                                 "delete an item (item was bought),3 to see the list,4 to add status of bought or not" +
                                 " and  5 to " +
                                 "close the program: ");
-                        String input = sc.nextLine();
-                        optionForSwitch = Integer.parseInt(input);
+                        try {
+                            String input = sc.nextLine();
+                            optionForSwitch = Integer.parseInt(input);
+                        } catch (NumberFormatException e) {
+                          printLn("Please enter a valid number. ");
+                        }
 
 
                         switch (optionForSwitch) {
@@ -95,7 +99,9 @@ public class Main {
                                 } else if (sureAboutThat.equalsIgnoreCase("no")) {
                                     break;
                                 }
+
                             case 5 :
+                                //Bug in that case , if u put 'no' so the output mensage is gonna be ugly
                                 cls();
                                 print("Are you sure ? [yes/no]: ");
                                 String sure = sc.next();
@@ -104,17 +110,12 @@ public class Main {
                                 stopWhile = true;
                                 break;
                                 }else if (sure.equalsIgnoreCase("no")){
-                                    break;
+                                    optionForSwitch = 0;
                                 }
+                            default:
+                                printLn("Invalid option ! ");
+
                         }
-                        //When the project is  finished, solve this , is not good one catch to very exceptions
-                        //After this , i made it, go to notion and see what is the next step
-                    }catch (Exception exception){
-                        cls();
-                        printLn("Please provide a valid text message : ");
-                    }
-
-
                 }
             }
             else if (!yesOrNo){
