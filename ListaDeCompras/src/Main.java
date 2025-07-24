@@ -92,19 +92,21 @@ public class Main {
                             case 4 :
                                 cls();
                                 print("Are you sure ? [yes/no]: ");
-                                String sureAboutThat = sc.next();
+                                String sureAboutThat = sc.nextLine();
                                 if (sureAboutThat.equalsIgnoreCase("yes")){
                                     shoppingList.setAsBoughtOrNotBought();
                                     break;
                                 } else if (sureAboutThat.equalsIgnoreCase("no")) {
-                                    break;
+                                    //Just go back to menu
                                 }
+                                optionForSwitch = 0;
+                                break;
 
                             case 5 :
                                 //Bug in that case , if u put 'no' so the output mensage is gonna be ugly
                                 cls();
                                 print("Are you sure ? [yes/no]: ");
-                                String sure = sc.next();
+                                String sure = sc.nextLine();
                                 if (sure.equalsIgnoreCase("yes")){
                                 print("Ok, good to see you =)");
                                 stopWhile = true;
@@ -112,6 +114,7 @@ public class Main {
                                 }else if (sure.equalsIgnoreCase("no")){
                                     optionForSwitch = 0;
                                 }
+                                break;
                             default:
                                 printLn("Invalid option ! ");
 

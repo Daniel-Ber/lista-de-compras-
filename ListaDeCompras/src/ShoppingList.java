@@ -57,7 +57,7 @@ public class ShoppingList {
     public void setAsBoughtOrNotBought() {
         //Read the index
         int index;
-        this.showElementsListWithNoScanner();
+        this.simpleShowElementsList();
         while (true) {
             try {
                 System.out.print("Type the number of the element : ");
@@ -127,7 +127,7 @@ public class ShoppingList {
         }else {
             try {
                 System.out.println("Type any number wich is not on the list to go back");
-                this.showElementsListWithNoScanner();
+                this.simpleShowElementsList();
                 System.out.println("Type the number of the element that you want to delet  : ");
                 int indexElement = scanner.nextInt() - 1;
                 String elementDel = shoppingList.get(indexElement);
@@ -143,7 +143,7 @@ public class ShoppingList {
 
     }
 
-    public  void showElementsListWithNoScanner(){
+    public  void simpleShowElementsList(){
         for (int i = 0; i < shoppingList.size() ; i++) {
             System.out.println("Element ("+(i + 1)+") : "+shoppingList.get(i));
         }
