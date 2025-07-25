@@ -103,7 +103,6 @@ public class Main {
                                 break;
 
                             case 5 :
-                                //Bug in that case , if u put 'no' so the output mensage is gonna be ugly
                                 cls();
                                 print("Are you sure ? [yes/no]: ");
                                 String sure = sc.nextLine();
