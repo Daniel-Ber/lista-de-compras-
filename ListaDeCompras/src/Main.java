@@ -19,6 +19,7 @@ public class Main {
      boolean stopWhile = false;
      Boolean yesOrNo = null;
      int optionForSwitch = 0;
+     ShoppingList shoppingList = null;
 
         print("Hello user , would you like to create a list? [yes/no]  : ");
         String read = sc.nextLine();
@@ -48,14 +49,14 @@ public class Main {
                 //Process to create a list
                 print("Type the name of your list : ");
                 String nameList = sc.nextLine();
-                ShoppingList shoppingList = new ShoppingList(nameList);
+                shoppingList = new ShoppingList(nameList);
                 printLn(" The "+ shoppingList.getListName()+ " was created " );
                 //List was created
 
                 //Using the list
 
                 while (!stopWhile){
-
+                        optionForSwitch = 0 ;
                         print("Press 1 to add a new item, 2 to " +
                                 "delete an item (item was bought),3 to see the list,4 to add status of bought or not" +
                                 " and  5 to " +
@@ -98,6 +99,8 @@ public class Main {
                                     break;
                                 } else if (sureAboutThat.equalsIgnoreCase("no")) {
                                     //Just go back to menu
+                                }else{
+                                    printLn("Invalid text mensage!  ");
                                 }
                                 optionForSwitch = 0;
                                 break;
@@ -107,11 +110,14 @@ public class Main {
                                 print("Are you sure ? [yes/no]: ");
                                 String sure = sc.nextLine();
                                 if (sure.equalsIgnoreCase("yes")){
-                                print("Ok, good to see you =)");
+                                printLn("Ok, good to see you =)");
+                                shoppingList.finalMensageOfTheList();
                                 stopWhile = true;
                                 break;
                                 }else if (sure.equalsIgnoreCase("no")){
                                     optionForSwitch = 0;
+                                }else{
+                                    printLn("Invalid text mensage!");
                                 }
                                 break;
                             default:

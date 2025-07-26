@@ -158,4 +158,8 @@ public class ShoppingList {
         String whatever = sc.next();
 
     }
+
+    public void finalMensageOfTheList(){
+        System.out.println("The " + listName  + " was ended with " + shoppingList.size()  + " elements." );
+    }
 }
