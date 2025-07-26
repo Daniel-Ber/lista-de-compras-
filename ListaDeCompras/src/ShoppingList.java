@@ -16,20 +16,8 @@ public class ShoppingList {
         shoppingList = new ArrayList<>();
     }
 
-    public List<String> getShoppingList() {
-        return shoppingList;
-    }
-
-    public void setListName(String listName) {
-        this.listName = listName;
-    }
-
     public String getListName() {
         return listName;
-    }
-
-    public void setShoppingList(List<String> shoppingList) {
-        this.shoppingList = shoppingList;
     }
 
 
